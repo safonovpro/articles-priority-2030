@@ -12,6 +12,8 @@ scopus = pd.read_csv('../data/scopus-sources-2020.csv', dtype={
     "Print ISSN": '-',
     "E-ISSN": '-'
 })[['Scopus Source ID', 'Title', 'SNIP', 'Print ISSN', 'E-ISSN']].drop_duplicates(subset=['Scopus Source ID']).reset_index(drop=True)
+scopus['Print ISSN'] = scopus['Print ISSN'].apply(lambda x: x if x == '-' or len(x) >= 8 else '0' * (8 - len(x)) + x)
+scopus['E-ISSN'] = scopus['E-ISSN'].apply(lambda x: x if x == '-' or len(x) >= 8 else '0' * (8 - len(x)) + x)
 
 cwts = pd.read_csv('../data/cwts-journal-indicators.csv', dtype={
     "Print ISSN": str,
