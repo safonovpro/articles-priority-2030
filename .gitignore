@@ -2,3 +2,4 @@
 data/**
 !data/.gitkeep
 !data/snip-thresholds.csv
+!data/cwts-journal-indicators.csv
