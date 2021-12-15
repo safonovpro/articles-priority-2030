@@ -91,4 +91,7 @@ def get_quartile(row):
 
 
 scopus['quartile'] = scopus.apply(get_quartile, axis=1)
+groups = scopus.groupby(['quartile']).count().reset_index()[['quartile', 'Scopus Source ID']].rename(columns={
+    "Scopus Source ID": "count"
+})
 scopus.to_csv('../data/result_scopus_sources_with_quartiles_by_priority_2030.csv')
